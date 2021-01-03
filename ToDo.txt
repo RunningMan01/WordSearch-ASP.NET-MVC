@@ -1,0 +1,3 @@
+Style canvas grid - maybes just fill with characters to see it
+Add listbox with words, Generate WordSearch grid, show solution
+$(document).ready not working !!!!

@@ -32,13 +32,18 @@ namespace WordSearch
             var initialGridLocation = GridLocation.GetRandomGridLocation(_randomNumberService, grid);
             var gridLocation = new GridLocation(initialGridLocation);
 
+
+            Random rnd = new Random();
+            // DirectionFlagsEnum[]
+            var allDirectionsRnd = _allDirections.OrderBy(x => rnd.Next()).ToArray();
+
             // move right and down, checking if word can fit into any direction. if so add it
             do
             {
                 // check word can be placed in any of the directions
-                // ToDo - start of with random direction
+                // ToDo - start off with random direction
                 // ToDo - are we using row, column or starte              
-                foreach (var direction in _allDirections)
+                foreach (var direction in allDirectionsRnd)
                 {
                     hiddenWord = new HiddenWord()
                     {

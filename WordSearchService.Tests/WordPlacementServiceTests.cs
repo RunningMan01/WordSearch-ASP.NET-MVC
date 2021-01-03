@@ -15,7 +15,7 @@ namespace WordSearchService.Tests
         public void GetWordPlacement ()
         {
             IRandomNumberService randomNumberService = new RandomNumberService();
-            var wordPlacementServices = new WordPlacementService(randomNumberService);
+            var wordPlacementService = new WordPlacementService(randomNumberService);
         }
 
         // PlaceWordInGrid
@@ -23,7 +23,7 @@ namespace WordSearchService.Tests
         public void PlaceWordInGrid_ValidWordDownwards_Success()
         {
             IRandomNumberService randomNumberService = new RandomNumberService();
-            var wordPlacementServices = new WordPlacementService(randomNumberService);
+            var wordPlacementService = new WordPlacementService(randomNumberService);
             var grid = new char[20, 20];
             var hiddenWord = new HiddenWord()
             {
@@ -31,7 +31,7 @@ namespace WordSearchService.Tests
                 Word = "hello",
                 Direction = DirectionFlagsEnum.Down
             };
-            var result = wordPlacementServices.PlaceWordInGrid(grid, hiddenWord);
+            var result = wordPlacementService.PlaceWordInGrid(grid, hiddenWord);
 
             Assert.True(result);
             Assert.Equal('h', grid[9, 9]);  // grid id 0 based
@@ -45,7 +45,7 @@ namespace WordSearchService.Tests
         public void PlaceWordInGrid_ValidWordUpwards_Success()
         {
             IRandomNumberService randomNumberService = new RandomNumberService();
-            var wordPlacementServices = new WordPlacementService(randomNumberService);
+            var wordPlacementService = new WordPlacementService(randomNumberService);
 
             var grid = new char[20, 20];
             var hiddenWord = new HiddenWord()
@@ -54,7 +54,7 @@ namespace WordSearchService.Tests
                 Word = "hello",
                 Direction = DirectionFlagsEnum.Up
             };
-            var result = wordPlacementServices.PlaceWordInGrid(grid, hiddenWord);
+            var result = wordPlacementService.PlaceWordInGrid(grid, hiddenWord);
 
             Assert.True(result);
             Assert.Equal('h', grid[9, 9]);  // grid id 0 based
