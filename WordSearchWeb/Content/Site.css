@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /* background-color: #fffac8 */
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +22,32 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#grid td {
+    padding-left:3px;
+    padding-right:3px;
+    background-color: white;
+    color:black;
+}
+
+#grid tr {
+    margin-top:-2px;
+    margin-bottom:-2px;
+    padding-top:-2px;
+    padding-bottom:-2px;
+}
+
+#inputRows, #inputCols {
+    width:3em;   
+}
+
+.cellHighlight {
+    background-color: red;
+    color: white;
+}
+
+.centre {
+    width:80%;
+    margin:auto;
 }

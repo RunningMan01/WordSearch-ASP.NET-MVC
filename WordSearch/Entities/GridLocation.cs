@@ -38,18 +38,15 @@ namespace WordSearchService.Entities
 
         public static GridLocation GetNextGridLocation(GridLocation gridLocation, char[,] grid)
         {
-            // 1b
-            // var row = gridLocation.Row++ % grid.GetLength(0);
-            // var column = gridLocation.Column++ % grid.GetLength(1);
-
-            var row = gridLocation.Row++;
-            var column = gridLocation.Column;
-            if (row > grid.GetLength(0))
+            var row = gridLocation.Row;
+            var column = gridLocation.Column + 1;
+            if (column > grid.GetLength(1))
             {
-                row = 1;
-                if (++column > grid.GetLength(1))
+                column = 1;
+                row++;
+                if (row > grid.GetLength(0))
                 {
-                    column = 1;
+                    row = 1;
                 }
             }
 

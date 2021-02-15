@@ -1,0 +1,65 @@
+﻿@using WordSearchWeb.Properties
+@model WordSearchWeb.Models.WordSearchDisplayModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="page-header">
+    <h1>@Model.Title&nbsp;<small>@Model.Description</small></h1>    
+</div>
+<br />
+<br />
+
+<!-- small-caps bold 18px/30px Georgia; -->
+<div style="width:60%;margin:auto">
+    @*<div style="float:left;font: bold 18px/30px Georgia;">Hidden Words</div>*@
+    <div style="float:left;margin-right: 20px;font: bold 18px/30px Georgia;">
+        <ul>
+            @for (var w = 0; w < Model.HiddenWords.Count; w++)
+            {
+                <li class="hiddenWord"
+                    data-start-col="@Model.HiddenWords[w].Start.Column"
+                    data-start-row="@Model.HiddenWords[w].Start.Row"
+                    data-direction="@Model.HiddenWords[w].Direction"
+                    data-wordNo="@w">@Model.HiddenWords[w].Word</li>
+            }
+        </ul>
+    </div>
+    <div style="float:left;">
+        <table id="grid" style="font-size:16px; border: 1px black solid">
+            @for (var r = 1; r <= Model.Rows; r++)
+            {
+                <tr>
+                    @for (var c = 1; c <= Model.Columns; c++)
+                    {
+                        var id = r.ToString() + "_" + c.ToString();
+                        <td id="@id" style="font-size:18px;text-align:center; padding-left:5px;padding-right:5px;">@Model.Grid[r - 1, c - 1]</td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+@*<div class="row">
+    <div class="col-sm-4 col-sm-offset-2">
+        <ul>
+            @for (var w = 0; w < Model.HiddenWords.Count; w++)
+            {
+                <li class="list-group-item hiddenWord"
+                    data-start-col="@Model.HiddenWords[w].Start.Column"
+                    data-start-row="@Model.HiddenWords[w].Start.Row"
+                    data-direction="@Model.HiddenWords[w].Direction"
+                    data-wordNo="@w"
+                    style="font:16px bold Verdana; border:1px solid black">@Model.HiddenWords[w].Word</li>
+                }
+        </ul>
+    </div>
+</div>*@
+
+<script>
+    $(document).ready(function () {
+        console.log("document");
+    })
+</script>
+@Scripts.Render("~/Scripts/WordSearch/WordSearchElements.js")
