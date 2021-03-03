@@ -10,22 +10,22 @@
 <br />
 <br />
 
-<!-- small-caps bold 18px/30px Georgia; -->
-<div style="width:60%;margin:auto">
-    @*<div style="float:left;font: bold 18px/30px Georgia;">Hidden Words</div>*@
-    <div style="float:left;margin-right: 20px;font: bold 18px/30px Georgia;">
-        <ul>
+<div style="width:70%;margin:auto">
+    <div style="float:left;margin-right:40px;font: 18px/30px Georgia;">        
+        <ul style="list-style-type: none">           
             @for (var w = 0; w < Model.HiddenWords.Count; w++)
             {
                 <li class="hiddenWord"
                     data-start-col="@Model.HiddenWords[w].Start.Column"
                     data-start-row="@Model.HiddenWords[w].Start.Row"
                     data-direction="@Model.HiddenWords[w].Direction"
-                    data-wordNo="@w">@Model.HiddenWords[w].Word</li>
-            }
+                    data-wordNo="@w" style="text-align: center;">
+                    @Model.HiddenWords[w].Word.Trim()
+                </li>
+            }          
         </ul>
-    </div>
-    <div style="float:left;">
+    </div>    
+    <div style="float: left;box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;">
         <table id="grid" style="font-size:16px; border: 1px black solid">
             @for (var r = 1; r <= Model.Rows; r++)
             {
@@ -40,22 +40,6 @@
         </table>
     </div>
 </div>
-
-@*<div class="row">
-    <div class="col-sm-4 col-sm-offset-2">
-        <ul>
-            @for (var w = 0; w < Model.HiddenWords.Count; w++)
-            {
-                <li class="list-group-item hiddenWord"
-                    data-start-col="@Model.HiddenWords[w].Start.Column"
-                    data-start-row="@Model.HiddenWords[w].Start.Row"
-                    data-direction="@Model.HiddenWords[w].Direction"
-                    data-wordNo="@w"
-                    style="font:16px bold Verdana; border:1px solid black">@Model.HiddenWords[w].Word</li>
-                }
-        </ul>
-    </div>
-</div>*@
 
 <script>
     $(document).ready(function () {

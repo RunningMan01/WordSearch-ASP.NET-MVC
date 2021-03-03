@@ -62,9 +62,15 @@ function highlightHiddenWord(startCell, delta, wordLength, color) {
     var row = startCell.row;
     var col = startCell.col;
 
+    console.log("delta: " + JSON.stringify(delta));
+    console.log("startCell: " + JSON.stringify(startCell));
+    console.log("row: " + row + ", col: " + col);
+    console.log("wordLength:" + wordLength);
+
     for (var l = 0; l < wordLength; l++) {     
         var letterId = row.toString() + "_" + col.toString();
-        $("#" + letterId).css("background-color", color.backgroundColour).css("color", color.color);
+        $("#" + letterId).css("background-color", color.backgroundColour)
+            .css("color", color.color);         
         row += delta.rowIncrement;
         col += delta.colIncrement;
     }
@@ -80,7 +86,8 @@ function getColor(wordElement) {
 
 function showHiddenWord(wordElement) {
     var startCell = getStartCell(wordElement);
-    var length = wordElement.text().length;    
+    console.log("s " + wordElement.text() + " e");
+    var length = wordElement.text().trim().length;
     var directionDelta = getDirectionDelta(wordElement);
     var color = getColor(wordElement);
 
