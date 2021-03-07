@@ -1,5 +1,6 @@
-﻿
-var maximumWords;
+﻿var maximumWords;
+var startLetter = null;
+
 var directions = [
     { name: "UP", rowIncrement: -1, colIncrement: 0 },
     { name: "UPRIGHT", rowIncrement: 1, colIncrement: 1 },
@@ -34,6 +35,22 @@ $("#showSolution").click(function () {
 
 $("li.hiddenWord").click(function () {
     showHiddenWord($(this));
+});
+
+$(".letter").dblclick(function () {
+    letterId = $(this).attr("id");
+    var letterPos = getRowColumnFromId(letterId);    
+    console.log("letter double clicked: " + letterPos.row + ": " + letterPos.col);
+    if (startLetter !== null) {
+        // This is end letter, check that it matches any of the hidden words
+        console.log("startLetter is defined");
+        // to do - from here !!
+        //checkHiddenWords(startLetter, letterPos);
+    }
+    else {        
+        console.log("startLetter NOT defined");
+        startLetter = letterPos;        
+    }
 });
 
 function getDirectionDelta(word) {
@@ -92,4 +109,12 @@ function showHiddenWord(wordElement) {
     var color = getColor(wordElement);
 
     highlightHiddenWord(startCell, directionDelta, length, color);
+}
+
+function getRowColumnFromId(id) {
+    var items = id.split("_");
+    return {
+        row: items[0],
+        col: items[1]
+    }
 }

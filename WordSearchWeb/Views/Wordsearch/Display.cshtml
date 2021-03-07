@@ -4,36 +4,38 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="page-header">
-    <h1>@Model.Title&nbsp;<small>@Model.Description</small></h1>    
+<div id="pageHeader">WordSearch Generator</div>
+
+<div class="page-header" style="padding-top:20px;">
+    <h1>@Model.Title&nbsp;<small>@Model.Description</small></h1>
 </div>
 <br />
 <br />
 
-<div style="width:70%;margin:auto">
-    <div style="float:left;margin-right:40px;font: 18px/30px Georgia;">        
-        <ul style="list-style-type: none">           
+<div class="centre80">
+    <div id="divWordList">
+        <ul id="ulWordList"> <!-- style="text-align:center;padding:0;list-style-type:none"> -->
             @for (var w = 0; w < Model.HiddenWords.Count; w++)
             {
                 <li class="hiddenWord"
                     data-start-col="@Model.HiddenWords[w].Start.Column"
                     data-start-row="@Model.HiddenWords[w].Start.Row"
                     data-direction="@Model.HiddenWords[w].Direction"
-                    data-wordNo="@w" style="text-align: center;">
+                    data-wordNo="@w">
                     @Model.HiddenWords[w].Word.Trim()
                 </li>
-            }          
+            }
         </ul>
-    </div>    
-    <div style="float: left;box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;">
-        <table id="grid" style="font-size:16px; border: 1px black solid">
+    </div>
+    <div class="shadow floatLeft">
+        <table id="grid" class="font16 blackBorder tableBorderCollapse">
             @for (var r = 1; r <= Model.Rows; r++)
             {
                 <tr>
                     @for (var c = 1; c <= Model.Columns; c++)
                     {
                         var id = r.ToString() + "_" + c.ToString();
-                        <td id="@id" style="font-size:18px;text-align:center; padding-left:5px;padding-right:5px;">@Model.Grid[r - 1, c - 1]</td>
+                        <td id="@id" class="letter cursorDefault font20 centreText paddingLeftRight5 greyBorder">@Model.Grid[r - 1, c - 1]</td>
                     }
                 </tr>
             }
